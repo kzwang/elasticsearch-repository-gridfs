@@ -48,10 +48,12 @@ public class GridFsRepository extends BlobStoreRepository {
         String bucket = repositorySettings.settings().get("bucket", "fs");
         String host = repositorySettings.settings().get("gridfs_host", "localhost");
         int port = repositorySettings.settings().getAsInt("gridfs_port", 27017);
+        String username = repositorySettings.settings().get("gridfs_username");
+        String password = repositorySettings.settings().get("gridfs_password");
 
         int concurrentStreams = repositorySettings.settings().getAsInt("concurrent_streams", componentSettings.getAsInt("concurrent_streams", 5));
         ExecutorService concurrentStreamPool = EsExecutors.newScaling(1, concurrentStreams, 5, TimeUnit.SECONDS, EsExecutors.daemonThreadFactory(settings, "[gridfs_stream]"));
-        blobStore = new GridFsBlobStore(settings, gridFsService.client(host, port), database, bucket, concurrentStreamPool);
+        blobStore = new GridFsBlobStore(settings, gridFsService.mongoDB(host, port, database, username, password), bucket, concurrentStreamPool);
         this.chunkSize = repositorySettings.settings().getAsBytesSize("chunk_size", componentSettings.getAsBytesSize("chunk_size", null));
         this.compress = repositorySettings.settings().getAsBoolean("compress", componentSettings.getAsBoolean("compress", true));
         this.basePath = BlobPath.cleanPath();

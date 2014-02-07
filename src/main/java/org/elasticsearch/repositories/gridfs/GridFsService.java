@@ -1,5 +1,6 @@
 package org.elasticsearch.repositories.gridfs;
 
+import com.mongodb.DB;
 import com.mongodb.MongoClient;
 import org.elasticsearch.ElasticsearchException;
 import org.elasticsearch.ElasticsearchIllegalArgumentException;
@@ -12,21 +13,25 @@ import java.net.UnknownHostException;
 
 public class GridFsService extends AbstractLifecycleComponent<GridFsService> {
 
-    private MongoClient client;
+    private DB mongoDB;
 
     @Inject
     public GridFsService(Settings settings) {
         super(settings);
     }
 
-    public synchronized MongoClient client(String host, int port) {
-        if (client != null) {
-            return client;
+    public synchronized DB mongoDB(String host, int port, String databaseName, String username, String password) {
+        if (mongoDB != null) {
+            return mongoDB;
         }
 
         try {
-            client = new MongoClient(host, port);
-            return client;
+            MongoClient client = new MongoClient(host, port);
+            mongoDB = client.getDB(databaseName);
+            if (username != null && password != null){
+                mongoDB.authenticate(username, password.toCharArray());
+            }
+            return mongoDB;
         } catch (UnknownHostException e) {
             throw new ElasticsearchIllegalArgumentException("Unknown host", e);
         }
@@ -44,8 +49,8 @@ public class GridFsService extends AbstractLifecycleComponent<GridFsService> {
 
     @Override
     protected void doClose() throws ElasticsearchException {
-        if (client != null) {
-            client.close();
+        if (mongoDB != null) {
+            mongoDB.getMongo().close();
         }
     }
 }

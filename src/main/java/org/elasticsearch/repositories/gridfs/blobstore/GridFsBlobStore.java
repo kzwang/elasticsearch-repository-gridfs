@@ -2,7 +2,6 @@ package org.elasticsearch.repositories.gridfs.blobstore;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
-import com.mongodb.MongoClient;
 import com.mongodb.gridfs.GridFS;
 import org.elasticsearch.common.blobstore.BlobPath;
 import org.elasticsearch.common.blobstore.BlobStore;
@@ -23,11 +22,10 @@ public class GridFsBlobStore extends AbstractComponent implements BlobStore {
 
     private final GridFS gridFS;
 
-    public GridFsBlobStore(Settings settings, MongoClient mongoClient, String dbName, String bucket, Executor executor) {
+    public GridFsBlobStore(Settings settings, DB db, String bucket, Executor executor) {
         super(settings);
         this.executor = executor;
 
-        DB db = mongoClient.getDB(dbName);
         gridFS = new GridFS(db, bucket);
 
         this.bufferSizeInBytes = (int) settings.getAsBytesSize("buffer_size", new ByteSizeValue(100, ByteSizeUnit.KB)).bytes();
