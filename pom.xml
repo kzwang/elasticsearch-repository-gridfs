@@ -2,14 +2,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <name>elasticsearch-gridfs-repository</name>
+    <name>elasticsearch-repository-gridfs</name>
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.kzwang</groupId>
-    <artifactId>elasticsearch-gridfs-repository</artifactId>
+    <artifactId>elasticsearch-repository-gridfs</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     <description>GridFS repository for Elasticserch snapshot</description>
-    <url>http://github.com/kzwang/elasticsearch-gridfs-repository</url>
+    <url>http://github.com/kzwang/elasticsearch-repository-gridfs</url>
 
     <licenses>
         <license>
@@ -20,10 +20,10 @@
     </licenses>
 
     <scm>
-        <connection>scm:git:git@github.com:kzwang/elasticsearch-gridfs-repository.git</connection>
-        <developerConnection>scm:git:git@github.com:kzwang/elasticsearch-gridfs-repository.git
+        <connection>scm:git:git@github.com:kzwang/elasticsearch-repository-gridfs.git</connection>
+        <developerConnection>scm:git:git@github.com:kzwang/elasticsearch-repository-gridfs.git
         </developerConnection>
-        <url>http://github.com/kzwang/elasticsearch-gridfs-repository</url>
+        <url>http://github.com/kzwang/elasticsearch-repository-gridfs</url>
     </scm>
 
     <developers>

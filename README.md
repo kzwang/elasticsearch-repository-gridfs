@@ -1,7 +1,7 @@
 GridFS repository plugin for Elasticsearch
 ==================================
 
-[![Build Status](https://travis-ci.org/kzwang/elasticsearch-gridfs-repository.png?branch=master)](https://travis-ci.org/kzwang/elasticsearch-gridfs-repository)
+[![Build Status](https://travis-ci.org/kzwang/elasticsearch-repository-gridfs.png?branch=master)](https://travis-ci.org/kzwang/elasticsearch-repository-gridfs)
 
 
 
