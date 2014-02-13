@@ -3,11 +3,12 @@ GridFS repository plugin for Elasticsearch
 
 [![Build Status](https://travis-ci.org/kzwang/elasticsearch-repository-gridfs.png?branch=master)](https://travis-ci.org/kzwang/elasticsearch-repository-gridfs)
 
-In order to install the plugin, simply run: `bin/plugin -install com.github.kzwang/elasticsearch-repository-gridfs/1.0.0.RC1`.
+In order to install the plugin, simply run: `bin/plugin -install com.github.kzwang/elasticsearch-repository-gridfs/1.0.0`.
 
 |      GridFS Plugin          | elasticsearch         | Release date |
 |-----------------------------|-----------------------|:------------:|
-| 1.0.0-SNAPSHOT (master)     | 1.0.0.RC2             |              |
+| 1.1.0-SNAPSHOT (master)     | 1.0.0                 |              |
+| 1.0.0                       | 1.0.0                 | 2014-02-13   |
 | 1.0.0.RC1                   | 1.0.0.RC2             | 2014-02-07   |
 
 
